@@ -1,0 +1,22 @@
+<div>
+  <form class="auth-frame">
+    <label id="auth-header">Авторизация</label>
+    <div class="mb-3">
+      <label for="userNameInput">Имя пользователя</label>
+      <input type="text" 
+             class="form-control"
+             id="userNameInput"
+             name="name"
+             [(ngModel)]="user.name">
+    </div>
+    <div class="mb-3">
+      <label for="passwordInput">Пароль</label>
+      <input type="password"
+             class="form-control"
+             id="passwordInput"
+             name="password"
+             [(ngModel)]="user.password">
+    </div>
+    <button (click)="authorizeUser()" type="submit" class="btn btn-primary">Войти</button> 
+  </form>
+</div>

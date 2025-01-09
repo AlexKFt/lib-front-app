@@ -1,0 +1,59 @@
+<div class="container">
+    <h1>My book lib</h1>
+
+    <hr>
+
+    <form (ngSubmit)="onSubmit(bookForm)" #bookForm="ngForm">
+        <div class="mb-3">
+          <label for="book" class="form-label">Книга</label>
+          <input type="text" class="form-control" id="book" 
+          placeholder="Enter book annotation" ngModel name="book"
+          required>
+          <small *ngIf="bookForm.invalid && bookForm.dirty" id="errorMessage" class="form-text text-danger">Required field</small>
+        </div>
+        <div class="mb-3">
+          <label for="author" class="form-label">Автор</label>
+          <input type="text" class="form-control" id="author" ngModel name="author">
+        </div>
+        <div class="mb-3">
+            <label for="bookpoint" class="form-label">Пункт выдачи</label>
+            <input type="text" class="form-control" id="bookpoint" ngModel name="bookpoint">
+        </div>
+        <div class="mb-3">
+            <label for="datetake" class="form-label">Дата выдачи</label>
+            <input type="text" class="form-control" id="datetake" ngModel name="datetake">
+        </div>
+        <div class="mb-3">
+            <label for="datereturn" class="form-label">Дата возврата</label>
+            <input type="text" class="form-control" id="datereturn" ngModel name="datereturn">
+        </div>
+        <button [disabled]="bookForm.invalid" id="submitButton" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <hr>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Книга</th>
+            <th scope="col">Автор</th>
+            <th scope="col">Пункт выдачи</th>
+            <th scope="col">Дата выдачи</th>
+            <th scope="col">Дата возврата</th>
+            <th scope="col">Удалить</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of bookArray; index as i">
+            <td>{{book.annotation}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.bookpoint}}</td>
+            <td>{{book.datetake}}</td>
+            <td>{{book.datereturn}}</td>
+            <td><button class="btn btn-danger btn-sm" (click)="onDelete(i)">Удалить</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+</div>
+
